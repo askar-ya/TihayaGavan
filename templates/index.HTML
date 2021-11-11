@@ -1,0 +1,246 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+    <link rel="shortcut icon" href="{% static 'base/img/logoWithoutText.svg' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'base/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/owl.theme.default.min.css' %}">
+	<link rel="stylesheet" href="{% static 'base/css/normalaiz.css' %}">
+	<link rel="stylesheet" href="{% static 'base/css/style.css' %}">
+	<title>Тихая гавнь</title>
+</head>
+<style>
+    .spec{
+        background-image: url({{ MEDIA_URL }}{{ spec.image1.url }})
+    }
+    @media (max-width: 645px){
+        .spec{
+            background-image: url({{ MEDIA_URL }}{{ spec.image2.url }});
+        }
+    }
+    @media (max-width: 503px){
+        .spec{
+            background-image: url({{ MEDIA_URL }}{{ spec.image2.url }});
+        }
+    }
+
+    @font-face{
+	font-family: 'Golos';
+	src: url('{% static 'base/fonts/Golos-Text_Regular.ttf' %}');
+	font-display: swap;
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face{
+	font-family: 'Golos';
+	src: url('{% static 'base/fonts/Golos-Text_Medium.ttf' %}');
+	font-display: swap;
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face{
+	font-family: 'Golos';
+	src: url('{% static 'base/fonts/Golos-Text_Bold.ttf' %}');
+	font-display: swap;
+	font-weight: 600;
+	font-style: bold;
+}
+</style>
+<body>
+	<header class="header">
+		<div class="container">
+			<img class="logo" src="{% static 'base/img/logo.svg' %}" alt="тихая гавнь лого">
+			<div class="points-box">
+				<a href="" class="point one">ГЛАВНАЯ</a>
+				<a href="#menu" class="point two">МЕНЮ</a>
+				<a href="#gal" class="point two se">ГАЛЕРЕЯ</a>
+			</div>
+		</div>
+	</header>
+	<main>
+        {% if bg%}
+                <section style='background-image: url("{{ MEDIA_URL }}{{ bg.image.url }}")' class="hero">
+                    <div class="container hero-shodow">
+                        <div class="first-line">
+                            <div class="about">
+                                <h1>О РЕСТОРАНЕ</h1>
+                                <hr class='dash-hr'>
+                                <h2>Мы&nbsp;&mdash; команда молодых и&nbsp;креативных, создающая уютные заведения для вас и&nbsp;	ваших близких!
+                                    Ресторанный комплекс &laquo;Тихая Гавань&raquo;
+                                </h2>
+                                <hr>
+                            </div>
+                            <div class="social_links">
+                                <div class="box">
+                                <div class="block one">
+                                    <a href="https://vk.com/rest_tg">
+                                        <img src="{% static 'base/img/vk_logo.png' %}" alt="">
+                                        <a   href="https://vk.com/rest_tg" class="text">група в вк</a>
+                                    </a>
+                                </div>
+
+                                <div class="block">
+                                    <a href="">
+                                        <img src="{% static 'base/img/phone_logo.png' %}" alt="">
+                                        <a class="text">
+                                            {{ phone.name}}
+                                        </a>
+                                    </a>
+                                </div>
+
+                                <div class="block one">
+                                    <a href="https://www.instagram.com/tikhaya_gavan/">
+                                        <img src="{% static 'base/img/insta_logo.png' %}" alt="">
+                                        <a href="https://www.instagram.com/tikhaya_gavan/" class="text">наш инстаграм</a>
+                                    </a>
+                                </div>
+
+                                <div class="block 4">
+                                    <a href="https://yandex.ru/profile/1235993351?no-distribution=1&source=wizbiz_new_map_single">
+                                        <img src="{% static 'base/img/map_logo.png' %}" alt="">
+                                        <a href="https://yandex.ru/profile/1235993351?no-distribution=1&source=wizbiz_new_map_single" class="text">мы на картах</a>
+                                    </a>
+                                </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+
+                        <div class="second-line">
+                            <div class="box">
+                                <h1 class="label">интерьер</h1>
+                                <img src="{% static 'base/img/interer_logo.png' %}" alt="">
+                                <p class="text">{{ interior.text }}</p>
+                            </div>
+
+                            <div class="box center">
+                                <h1 class="center_label">место</h1>
+                                <img class='center_img' src="{% static 'base/img/place_logo.png' %}" alt="">
+                                <p class="text" align='center'>{{ place.text }}</p>
+                            </div>
+
+                            <div class="box end">
+                                <h1 class="label">команда</h1>
+                                <img src="{% static 'base/img/team_logo.png' %}" alt="">
+                                <p class="text" align='right'>{{ team.text }}</p>
+                            </div>
+                        </div>
+                        <div style="height:180px;"></div>
+                    </div>
+                </section>
+        {% endif %}
+		<div class="wave"></div>
+		<section id='menu' class="menu">
+			<div class="container">
+				<div class="menu-label">
+					<hr>
+					<img src="{% static 'base/img/fork.png' %}" alt="">
+					<h1>МЕНЮ</h1>
+					<img src="{% static 'base/img/spoon.png' %}" alt="">
+					<hr>
+				</div>
+				<ul class="snip1250">
+  					<li class="current"><a href="#" data-hover="ГОРЯЧИЕ">ГОРЯЧИЕ</a></li>
+  					<li><a href="#salad" data-hover="САЛАТЫ">САЛАТЫ</a></li>
+                    <li><a href="#spec" data-hover="СПЕЦПРЕДЛОЖЕНИЯ">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+  					<li><a href="#snacks" data-hover="ЗАКУСКИ">ЗАКУСКИ</a></li>
+  					<li><a href="#bar" data-hover="КАРТА БАРА">КАРТА БАРА</a></li>
+  					<li><a href="#dessert" data-hover="ДЕСЕРТЫ">ДЕСЕРТЫ</a></li>
+				</ul>
+				<div class="hot">
+                    {% if hot %}
+                        {% for a in hot %}
+                            <div class="dish">
+                                <img src="{{ MEDIA_URL }}{{ a.image.url }}" alt="">
+                                <h2>{{ a.name }}</h2>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+				</div>
+                <div class="menu-section" id="salad">
+                    <h1>салаты</h1>
+                    <hr>
+                </div>
+                <div class="hot">
+                    {% if salad %}
+                        {% for a in salad %}
+                            <div class="dish">
+                                <img src="{{ MEDIA_URL }}{{ a.image.url }}" alt="">
+                                <h2>{{ a.name }}</h2>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+				</div>
+                <div class="menu-section" id="spec">
+                    <h1>спецпредложения</h1>
+                    <hr>
+                </div>
+                <div class="hot">
+                            <div class="spec">
+                                <img src="{{ MEDIA_URL }}{{ spec.image.url }}" alt="">
+                            </div>
+				</div>
+                <div class="menu-section" id="snacks">
+                    <h1>закуски</h1>
+                    <hr>
+                </div>
+                <div class="hot">
+                    {% if snacks %}
+                        {% for a in snacks %}
+                            <div class="dish">
+                                <img src="{{ MEDIA_URL }}{{ a.image.url }}" alt="">
+                                <h2>{{ a.name }}</h2>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+				</div>
+                <div class="menu-section" id="bar">
+                    <h1>карта&nbsp;бара</h1>
+                    <hr>
+                </div>
+                <div class="hot">
+                    {% if bar %}
+                        {% for a in bar %}
+                            <div class="dish">
+                                <img src="{{ MEDIA_URL }}{{ a.image.url }}" alt="">
+                                <h2>{{ a.name }}</h2>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+				</div>
+                <div class="menu-section" id="dessert">
+                    <h1>десерты</h1>
+                    <hr>
+                </div>
+                <div class="hot">
+                    {% if dessert %}
+                        {% for a in dessert %}
+                            <div class="dish">
+                                <img src="{{ MEDIA_URL }}{{ a.image.url }}" alt="">
+                                <h2>{{ a.name }}</h2>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+				</div>
+                <div class="owl-carousel" id="gal">
+                    {% if gall %}
+                        {% for a in gall %}
+                            <img src="{{ MEDIA_URL }}{{ a.image.url }}" style="width:100%">
+                        {% endfor %}
+                {% endif %}
+                </div>
+			</div>
+		</section>
+	</main>
+    <div style="height:180px;"></div>
+
+
+<script src="{% static 'base/js/jquery.js' %}"></script>
+<script src="{% static 'base/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'base/js/script.js' %}"></script>
+</body>
+</html>
